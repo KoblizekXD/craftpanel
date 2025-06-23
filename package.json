@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "biome --write ."
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -14,14 +14,21 @@
     "next": "15.3.4"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,vue,yaml,yml}": [
+      "bun run format"
+    ]
+  }
 }
