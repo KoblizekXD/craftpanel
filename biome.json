@@ -1,10 +1,10 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.4/schema.json",
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "ignore": [".next/**"]
+    "includes": ["**", "!**/.next/**"]
   },
   "linter": {
     "enabled": true,
@@ -12,27 +12,38 @@
       "recommended": true,
       "correctness": {
         "noUnusedImports": "error"
+      },
+      "style": {
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       }
     },
-    "ignore": [".next/**"]
+    "includes": ["**", "!**/.next/**"]
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "javascript": {
     "formatter": {
       "bracketSameLine": true
     }
   },
   "files": {
-    "ignore": [
-      ".next/**",
-      "bun.lock",
-      "package-lock.json",
-      "pnpm-lock.yaml",
-      "yarn.lock",
-      "src/generated/**",
-      "src/components/ui/**"
+    "includes": [
+      "**",
+      "!**/.next/**",
+      "!**/bun.lock",
+      "!**/package-lock.json",
+      "!**/pnpm-lock.yaml",
+      "!**/yarn.lock",
+      "!**/src/generated/**",
+      "!**/src/components/ui/**"
     ]
   }
 }
