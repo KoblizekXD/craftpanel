@@ -1,16 +1,22 @@
+import type Dockerode from "dockerode";
 import { createContext, useContext } from "react";
 
-interface Server {
+export interface Server {
   id: string;
   name: string;
   status: string;
 }
 
-interface ServerContext {
+type ServerContext = {
   servers: Server[];
-}
+  loading: boolean;
+  success: boolean;
+  error?: string;
+  connectionDetails: Dockerode.DockerOptions;
+};
 
 export const ServerContext = createContext<ServerContext | undefined>(
   undefined,
 );
+
 export const useServerContext = () => useContext(ServerContext);

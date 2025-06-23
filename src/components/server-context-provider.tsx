@@ -1,7 +1,8 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { ServerContext } from "@/lib/server-context";
+import { connectionOptions } from "@/lib/docker";
+import { type Server, ServerContext } from "@/lib/server-context";
 
 export default function ServerContextProvider({
   children,
@@ -16,7 +17,14 @@ export default function ServerContextProvider({
   });
 
   return (
-    <ServerContext.Provider value={{ servers: query.data ?? [] }}>
+    <ServerContext.Provider
+      value={{
+        servers: (query.data as Server[]) ?? [],
+        loading: query.isLoading,
+        success: query.isSuccess,
+        error: query.isError ? query.error.message : undefined,
+        connectionDetails: connectionOptions,
+      }}>
       {children}
     </ServerContext.Provider>
   );
