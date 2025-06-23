@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Server, Settings, Terminal } from "lucide-react";
+import { Info, Server, Settings } from "lucide-react";
 import Link from "next/link";
 import { useServerContext } from "@/lib/server-context";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
@@ -8,13 +8,12 @@ import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from "./ui/sidebar";
 
@@ -74,40 +73,44 @@ export function DashboardSidebar({
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href={"/overview"} className="font-medium">
-                  <Info />
-                  Overview
-                </Link>
-              </SidebarMenuButton>
-              <SidebarMenuSub>
-                <SidebarMenuSubItem>
-                  <SidebarMenuSubButton asChild>
-                    <Link href={"/analytics"}>Analytics</Link>
-                  </SidebarMenuSubButton>
-                </SidebarMenuSubItem>
-              </SidebarMenuSub>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href={"/servers"} className="font-medium">
-                  <Terminal />
-                  Servers
-                </Link>
-              </SidebarMenuButton>
-              <SidebarMenuSub></SidebarMenuSub>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href={"/settings"} className="font-medium">
-                  <Settings />
-                  Settings
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
+          <SidebarGroupLabel>General</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/analytics"}>
+                    <Info />
+                    Analytics
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/settings"}>
+                    <Settings />
+                    Settings
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Servers</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {serverContext?.servers.map((server) => (
+                <SidebarMenuItem key={server.id}>
+                  <SidebarMenuButton asChild>
+                    <Link href={`/servers/${server.id}`}>
+                      <Server />
+                      {server.name}
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
