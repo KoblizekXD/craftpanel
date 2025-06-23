@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@biomejs/biome": "^2.0.4",
+    "@tanstack/react-query": "^5.81.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dockerode": "^4.0.7",
     "lucide-react": "^0.522.0",
     "next": "15.3.4",
     "react": "^19.0.0",
@@ -30,7 +32,11 @@
     "typescript": "^5"
   },
   "trustedDependencies": [
-    "@tailwindcss/oxide"
+    "@tailwindcss/oxide",
+    "cpu-features",
+    "protobufjs",
+    "sharp",
+    "ssh2"
   ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md,vue,yaml,yml}": [
