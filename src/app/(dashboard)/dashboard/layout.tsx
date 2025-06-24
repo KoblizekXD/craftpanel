@@ -17,7 +17,7 @@ export default async function DashboardLayout({
           } as React.CSSProperties
         }>
         <DashboardSidebar />
-        <main className="flex w-full min-h-screen flex-col items-center justify-between p-8 md:p-24">
+        <main className="flex w-full min-h-screen flex-col justify-between p-8 md:p-24">
           {children}
         </main>
       </SidebarProvider>

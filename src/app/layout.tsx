@@ -26,7 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.style} ${jetbrainsMono.variable} antialiased`}>
+      <body
+        className={`${inter.className} ${jetbrainsMono.variable} antialiased`}>
         <QueryClientContextProvider>{children}</QueryClientContextProvider>
       </body>
     </html>
