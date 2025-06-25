@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Server, Settings } from "lucide-react";
+import { ChartArea, Info, Server, Settings } from "lucide-react";
 import Link from "next/link";
 import { useServerContext } from "@/lib/server-context";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
@@ -79,7 +79,7 @@ export function DashboardSidebar({
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/analytics"}>
-                    <Info />
+                    <ChartArea />
                     Analytics
                   </Link>
                 </SidebarMenuButton>
@@ -99,6 +99,14 @@ export function DashboardSidebar({
           <SidebarGroupLabel>Servers</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/servers"}>
+                    <Info />
+                    Overview
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
               {serverContext?.servers.map((server) => (
                 <SidebarMenuItem key={server.id}>
                   <SidebarMenuButton asChild>
