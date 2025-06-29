@@ -2,6 +2,7 @@
 
 import { LoaderCircle, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
+import CreateServerDialog from "@/components/create-server-dialog";
 import StatusBadge from "@/components/status-badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,10 +23,12 @@ export default function ServersPage() {
     <div className="flex flex-col gap-y-7 h-full">
       <h1 className="text-2xl font-bold">Servers</h1>
       <div className="flex items-center">
-        <Button className="flex items-center gap-x-1">
-          <Plus />
-          Create
-        </Button>
+        <CreateServerDialog>
+          <Button className="flex items-center gap-x-1">
+            <Plus />
+            Create
+          </Button>
+        </CreateServerDialog>
       </div>
       {servers?.loading ? (
         <div className="flex items-center gap-x-2 justify-center h-full">
